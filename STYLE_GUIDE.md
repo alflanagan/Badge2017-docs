@@ -34,7 +34,8 @@ Functions that are meant to be private should be prefixed by an underscore:
 void _pfx_descriptor();
 ```
 
-Functions that are tightly connected to a struct should have the 
+Functions that are tightly connected to a struct should have the struct name 
+included just after the prefix.
 
 ```C
 void pfx_struct_name_descriptor();
@@ -42,8 +43,8 @@ void pfx_struct_name_descriptor();
 
 ## Struct Names
 
-Structs must be `typedef`ed, be lowercase, must have a name prefix, and be postfixed with 
-`_t`.
+Structs must be `typedef`ed, be lowercase, must have a name prefix, and be 
+postfixed with `_t`.
 
 ```C
 typedef struct pfx_descriptor_t {
@@ -82,37 +83,10 @@ int pfx_descriptor() {
 }
 ```
 
-## Brace Positioning
-
-Braces used for code blocks must have the opening brace at the end of the 
-line. In the case of else, the previous block's closing brace must be at
-the start of the line. In general, whenever a closing brace is used it must
-be at the start of the newline and, except in the case of else, be alone on
-that line.
-
-```C
-void pfx_descriptor() {
-}
-
-if(conditional) {
-    /* DO THIS */
-} else {
-    /* DO SOMETHING ELSE*/
-}
-```
-
-## Lines
-
-Code lines should not exceed 80 characters in length.
-
-## Blank Lines
-
-Blank lines need to be added after blocks of declarations, 
-
 ## Blame
 
-Any time that a file is modified, their name must be added to comments at 
-the top of the file listing everyone who has modified that file. This is
+Any time that a file is modified, the modifier must add their name to comments 
+at the top of the file listing everyone who has modified that file. This is
 in addition to pull request records that will include similar and additional
 records.
 
