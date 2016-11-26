@@ -64,6 +64,22 @@ enum pfx_descriptor_e {
 };
 ```
 
+## Header Files
+
+Every C file that defines a function should have a corresponding
+header file (with same name and .h extension). Every function in the C
+file should have a prototype in the header file. The C file itself,
+and any other C file that calls a function from the C file, should
+`#include` the matching header file.
+
+This allows the compiler to ensure that every call to each function has
+arguments of the correct number and type.
+
+The header file with prototype is also a good location for the
+external function documentation, i.e. anything that function callers
+need to know. The function definition is the place for documentation
+that developers who are modifying the function should know.
+
 ## Indentation
 
 Whenever a new level of curly braces is reached the lines within those curly
