@@ -86,6 +86,40 @@ external function documentation, i.e. anything that function callers
 need to know. The function definition is the place for documentation
 that developers who are modifying the function should know.
 
+## Global Variables (`extern`)
+
+Several global variables are defined in the source. The rules for a
+variable which is shared between multiple source files are as follows:
+
+* A header file only contains extern declarations of variables — never
+  static or unqualified variable definitions.
+
+* For any given variable, only one header file declares it (SPOT —
+  Single Point of Truth).
+
+* A source file never contains extern declarations of variables —
+  source files always include the (sole) header that declares them.
+
+* For any given variable, exactly one source file defines the
+  variable, preferably initializing it too. (Although there is no need
+  to initialize explicitly to zero, it does no harm and can do some
+  good, because there can be only one initialized definition of a
+  particular global variable in a program).
+
+* The source file that defines the variable also includes the header
+  to ensure that the definition and the declaration are consistent.
+
+* A function should never need to declare a variable using extern.
+
+These guidelines are "stolen" from a
+stackoverflow.com [answer](http://stackoverflow.com/a/1433387/132510)
+which has an extensive discussion best practices for global variables
+in C. Note I left out one rule: "Avoid global variables whenever
+possible — use functions instead". That's usually excellent advice,
+but may cause a space or time penalty that should be avoided in
+embedded programming. Use your best judgement (and if in doubt, try it
+both ways and see what happens).
+
 ## Indentation
 
 Whenever a new level of curly braces is reached the lines within those curly
